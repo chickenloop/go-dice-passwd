@@ -26,7 +26,7 @@ for i:=0; i<5; i++ {
 }
 
 func main(){
-fmt.Println("This is a Go program to generate Dice based passwords")
+fmt.Println("Please enter a single char, the program will try to convert it to an integer and use it to generate the passhprase")
 
 //read how many words do u want for a passphrase 
 
