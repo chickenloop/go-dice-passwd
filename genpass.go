@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 )
@@ -25,10 +26,19 @@ for i:=0; i<5; i++ {
 }
 
 func main(){
-	fmt.Println("This is a Go program to generate Dice based passwords")
+fmt.Println("This is a Go program to generate Dice based passwords")
+
+//read how many words do u want for a passphrase 
+
+reader := bufio.NewReader(os.Stdin)
+char, _, err := reader.ReadRune()
+if err!= nil {
+	fmt.Println(err)
+}
+
+//fmt.Println(int(char)- '0')
 
 // first go to the url and load all the files there... 
-
 var url string = "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt"
 resp, error := http.Get(url)
 if error!= nil {
@@ -53,7 +63,7 @@ for scanner.Scan() {
 //generate a for loop which run for times..or N times if needed longer passphrase
 k:=1
 var final string = ""
-for k <= 4 {
+for k <= int(char)-'0' {
 	v, found := lineparts[genPasscode()]
 	if found !=true {
 		continue	
